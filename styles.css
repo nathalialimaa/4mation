@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+/* Define a grid layout for the game board with 7 columns and 7 rows */
+#tabuleiro {
+    display: grid;
+    grid-template-columns: repeat(7, 90px);
+    grid-template-rows: repeat(7, 90px);
+    gap: 5px;
+}
+
+/* Style for each cell in the game board */
+.casa {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Altere o fundo para preto */
+    border: 1px solid rgb(99, 96, 96);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Colors for the pieces */
+.azul {
+    background-color: rgb(17, 241, 204);
+}
+
+.vermelho {
+    background-color: rgb(247, 8, 60);
+}
+
+/* Highlight for valid move positions */
+.destacada {
+    background-color: rgb(83, 83, 78);
+}
+
+/* Highlight for the last played piece */
+.ultima {
+    border: 3px solid white; /* Altere a cor da borda para branco */
+}
+/* Style for the message box */
+#mensagem {
+    background-color: gray; /* Define o fundo como cinza */
+    padding: 10px; /* Adiciona padding ao redor do texto */
+    border-radius: 10px; /* Arredonda as bordas */
+    margin-top: 20px; /* Adiciona espaço acima da mensagem */
+    text-align: center; /* Centraliza o texto */
+    color: white; /* Muda a cor do texto para branco */
