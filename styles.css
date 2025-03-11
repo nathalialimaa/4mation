@@ -48,9 +48,16 @@ body {
 }
 /* Style for the message box */
 #mensagem {
-    background-color: gray; /* Define o fundo como cinza */
     padding: 10px; /* Adiciona padding ao redor do texto */
     border-radius: 10px; /* Arredonda as bordas */
     margin-top: 20px; /* Adiciona espaço acima da mensagem */
     text-align: center; /* Centraliza o texto */
-    color: white; /* Muda a cor do texto para branco */
+
+/* Colors for the message text */
+.mensagem-azul {
+    color: rgb(17, 241, 204) !important;
+}
+
+.mensagem-vermelho {
+    color: rgb(247, 8, 60) !important;
+}

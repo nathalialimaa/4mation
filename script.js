@@ -17,7 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 tabuleiro.appendChild(casa);
             }
         }
-        mensagem.textContent = `Turno do jogador ${jogadorAtual}`;
+        atualizarMensagem(`Turno do jogador ${jogadorAtual}`, jogadorAtual);
+    }
+
+    // Função para atualizar a mensagem e a cor do texto conforme o jogador atual
+    function atualizarMensagem(texto, jogador) {
+        mensagem.textContent = texto;
+        if (jogador === "azul") {
+            mensagem.style.color = "rgb(17, 241, 204)";
+        } else if (jogador === "vermelho") {
+            mensagem.style.color = "rgb(247, 8, 60)";
+        } else {
+            mensagem.style.color = "white"; // Padrão para empates
+        }
     }
 
     // Função para posicionar uma peça no tabuleiro
@@ -36,14 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Verifica se há vitória ou empate
                 if (verificarVitoria(linha, coluna)) {
-                    mensagem.textContent = `Jogador ${jogadorAtual} venceu!`;
+                    atualizarMensagem(`Jogador ${jogadorAtual} venceu!`, jogadorAtual);
                     bloquearTabuleiro();
                 } else if (verificarEmpate()) {
-                    mensagem.textContent = "Jogo empatado!";
+                    atualizarMensagem("Jogo empatado!", null);
                 } else {
                     // Alterna o jogador e atualiza a mensagem
                     jogadorAtual = jogadorAtual === "azul" ? "vermelho" : "azul";
-                    mensagem.textContent = `Turno do jogador ${jogadorAtual}`;
+                    atualizarMensagem(`Turno do jogador ${jogadorAtual}`, jogadorAtual);
                     destacarCasasValidas();
                 }
             }
@@ -90,10 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-    // Função para verificar se o jogo terminou empatado
-    function verificarEmpate() {
-        return [...tabuleiro.children].every(casa => casa.classList.contains("azul") || casa.classList.contains("vermelho"));
-    }
 
     // Função para verificar se houve vitória
     function verificarVitoria(linha, coluna) {
@@ -125,6 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
+    // Função para verificar se o jogo terminou empatado
+    function verificarEmpate() {
+        return [...tabuleiro.children].every(casa => casa.classList.contains("azul") || casa.classList.contains("vermelho"));
+    }
 
     // Função para bloquear o tabuleiro após o término do jogo
     function bloquearTabuleiro() {
@@ -135,6 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Inicializa o tabuleiro e destaca as casas válidas
     criarTabuleiro();
-    mensagem.textContent = `Turno do jogador ${jogadorAtual}`;
+    atualizarMensagem(`Turno do jogador ${jogadorAtual}`, jogadorAtual);
     destacarCasasValidas();
 });
