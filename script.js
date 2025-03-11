@@ -102,7 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-
+    // Função para verificar se o jogo terminou empatado
+    function verificarEmpate() {
+        return [...tabuleiro.children].every(casa => casa.classList.contains("azul") || casa.classList.contains("vermelho"));
+    }
     // Função para verificar se houve vitória
     function verificarVitoria(linha, coluna) {
         const direcoes = [
@@ -133,17 +136,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
-    // Função para verificar se o jogo terminou empatado
-    function verificarEmpate() {
-        return [...tabuleiro.children].every(casa => casa.classList.contains("azul") || casa.classList.contains("vermelho"));
-    }
+
 
     // Função para bloquear o tabuleiro após o término do jogo
     function bloquearTabuleiro() {
         [...tabuleiro.children].forEach(casa => {
             casa.style.pointerEvents = "none";
         });
-    }
+    }   
 
     // Inicializa o tabuleiro e destaca as casas válidas
     criarTabuleiro();
